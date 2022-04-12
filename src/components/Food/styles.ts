@@ -1,6 +1,10 @@
 import styled, { css } from 'styled-components';
+import { FoodType } from '../../factories/food';
 
-export const Container = styled.div`
+type FoodPreview = Pick<FoodType, "available">;
+
+
+export const Container = styled.div<FoodPreview>`
   background: #f0f0f5;
   border-radius: 8px;
 
@@ -11,16 +15,18 @@ export const Container = styled.div`
     overflow: hidden;
     transition: 0.3s opacity;
     text-align: center;
+    
 
-    ${props =>
-    !props.available &&
-    css`
-        opacity: 0.3;
-      `};
+    ${props => !props.available &&
+      css` 
+        opacity: 0.3; 
+        `
+    }
 
     img {
       pointer-events: none;
       user-select: none;
+      width: 350px;
     }
   }
 

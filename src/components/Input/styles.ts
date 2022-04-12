@@ -1,6 +1,11 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components'
+ 
+type InputPreview = {
+  isFocused: boolean
+  isFilled: boolean
+}
 
-export const Container = styled.div`
+export const Container = styled.div<InputPreview>`
   display: flex;
   align-items: center;
 

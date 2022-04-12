@@ -1,16 +1,16 @@
-import {
-  useEffect,
-  useRef,
-  useState,
-  useCallback,
-} from 'react';
-
+import { useEffect, useRef, useState, useCallback } from 'react';
 import { useField } from '@unform/core';
-
 import { Container } from './styles';
 
-const Input = ({ name, icon: Icon, ...rest }) => {
-  const inputRef = useRef(null);
+type InputProps = {
+  name: string
+  icon?: any
+  placeholder?: string
+}  
+
+
+const Input = ({ name, icon: Icon, placeholder, ...rest }: InputProps) => {
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
@@ -43,6 +43,7 @@ const Input = ({ name, icon: Icon, ...rest }) => {
         onFocus={handleInputFocus}
         onBlur={handleInputBlur}
         defaultValue={defaultValue}
+        placeholder={placeholder}
         ref={inputRef}
         {...rest}
       />
